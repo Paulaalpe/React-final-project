@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { Route, Link, Routes, useNavigate } from 'react-router-dom';
-import AuthRoute from './../AuthRoute/AuthRoute';
+import AuthRoute from '../AuthRoute/AuthRoute';
+import { RProvider } from './../../context/RequestsContext';
 
-const Home = React.lazy(() => import('./../Home/Home'));
-const Plans = React.lazy(() => import('./../Plans/Plans'));
-const Account = React.lazy(() => import('./../Account/Account'));
-const Login = React.lazy(()=> import('./../Login/Login') );
+const Home = React.lazy(() => import('../../pages/Home/Home'));
+const Plans = React.lazy(() => import('../../pages/Plans/Plans'));
+const Account = React.lazy(() => import('../../pages/Account/Account'));
+const Login = React.lazy(()=> import('../Login/Login') );
 
 const userArray = [
     {email: 'alumno@upgrade.com', password: '1234', name: 'Alumno'},
@@ -36,8 +37,8 @@ const Header = () => {
     };
 
   return (
-    <div className="Header">
-    <header>
+    <div className="header">
+    <nav>
       <Link to="/">
         <button>Inicio</button>
       </Link>
@@ -50,15 +51,16 @@ const Header = () => {
         <Link to="/mi-cuenta">
           <button>Mi Cuenta</button>
         </Link>
-        <button onClick={logoutUser}>Salir</button>
+        <button onClick={logoutUser}>Cerrar sesión</button>
         </> :
         <Link to="/acceder">
           <button>Acceder</button>
         </Link>
       }
 
-    </header>
+    </nav>
     <main>
+    < RProvider>
       <Routes>
         <Route 
           path="/" 
@@ -105,6 +107,7 @@ const Header = () => {
           } 
         />
       </Routes>
+      </RProvider>
     </main>
    
   

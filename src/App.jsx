@@ -1,13 +1,13 @@
 import React  from 'react';
+
 import './App.scss';
 
-import Header from './pages/Header/Header';
+import Header from './components/Header/Header';
+
 
 
 function App() {
- 
-
-  return (
+   return (
     <div className="App">
       <Header />
     </div>

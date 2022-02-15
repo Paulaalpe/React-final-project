@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 const CountDown = () => {
     const [time, setTime] = useState("");
+    
     useEffect(() => {
         let counDownDate = new Date("Mar 24, 2022 22:00:00").getTime();
         let x = setInterval(() => {
@@ -13,7 +14,6 @@ const CountDown = () => {
             let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             setTime(days + " días " + hours + " horas " + minutes + " minutos " + seconds + " segundos ");
-
             if (distance < 0) {
                 clearInterval(x);
                 setTime("Countdown finished")

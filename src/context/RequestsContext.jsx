@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 
-export const RContext = React.createContext(null);
+export const RequestContext = React.createContext(null);
 
-export const RProvider = ({ children }) => {
+export const RequestProvider = ({ children }) => {
     const [planItems, setPlanItems] = useState([]);
 
     const store = {
@@ -10,6 +10,6 @@ export const RProvider = ({ children }) => {
         setPlanItems
     }
 
-  return <RContext.Provider value={store}>{children}</RContext.Provider>;
+  return <RequestContext.Provider value={store}>{children}</RequestContext.Provider>;
 }
 

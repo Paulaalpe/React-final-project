@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Route, Link, Routes, useNavigate } from 'react-router-dom';
 import AuthRoute from '../AuthRoute/AuthRoute';
-import { RProvider } from './../../context/RequestsContext';
+import { RequestProvider } from './../../context/RequestsContext';
 
 const Home = React.lazy(() => import('../../pages/Home/Home'));
 const Plans = React.lazy(() => import('../../pages/Plans/Plans'));
@@ -57,10 +57,9 @@ const Header = () => {
           <button>Acceder</button>
         </Link>
       }
-
     </nav>
     <main>
-    < RProvider>
+    < RequestProvider>
       <Routes>
         <Route 
           path="/" 
@@ -102,12 +101,12 @@ const Header = () => {
           path="*" 
           element={
             <React.Suspense fallback={<>Cargando...</>}>
-              <p>Oh! La página que buscas no existe</p>
+              <p>404 -Oh! La página que buscas no existe</p>
             </React.Suspense>
           } 
         />
       </Routes>
-      </RProvider>
+      </RequestProvider>
     </main>
    
   

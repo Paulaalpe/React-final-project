@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import './Login.scss'
 
 const INITIAL_STATE = {
     email: '',
@@ -23,7 +24,8 @@ const Login = (props) => {
         };
 
   return (
-        <>
+        <div className='Login'>
+        <p>Recuerda que esta fiesta es privada, sólo para los alumnos del Bootcamp FullStack (Septiembre 2021) </p>
         <form onSubmit={submitForm}>
             <label>
                 <p>Email</p>
@@ -35,14 +37,14 @@ const Login = (props) => {
             </label>
         
             <div>
-                <button type='submit'>Acceder</button>
+                <button className='ButtonLogin'type='submit'>Acceder</button>
             </div>
         </form>
         <p>
             {props.loginError && <div style={{color:'red'}}>{props.loginError}</div>}
         </p>
       
-      </>
+      </div>
   );
 }
 

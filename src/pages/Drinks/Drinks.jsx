@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
 import Cocktails from '../../components/Cocktails/Cocktails';
 import { DrinksDB } from '../../DrinksDB/DrinksDB';
-import { RequestContext } from './../../context/RequestsContext';
+import { RequestContext } from '../../context/RequestsContext';
+import './Drinks.scss';
 
 const { drinks} = DrinksDB
 
@@ -26,21 +27,24 @@ const Plans = () => {
 
   return (
     <div>
-        <h1>Planes</h1>
-        <h2>Bebidas</h2>
+        <h1>Bebidas Disponibles</h1>
+        <p> Puedes elegir todas las que quieras</p><p>¡paga UpgradeHub!</p>
+        <div className='ListDrinks'>
         <ul>
             {items.map(item => {
                 
                 return (
                     <li key={item.id}>
                         {item.name} 
-                            <button onClick={() => handleAddItem(item)}
-                                >Añadir
+                            <button className='ButtonCart' onClick={() => handleAddItem(item)}
+                                > ¡ Añadir !
                             </button>
                     </li>
                 )
             })}
         </ul>
+        </div>
+        <h2>Por si quieres inspirarte</h2>
         <Cocktails />
     </div>
   )

@@ -1,6 +1,7 @@
 import React, { useContext, useState} from 'react';
 import { RequestContext } from '../../context/RequestsContext';
 
+import './Account.scss';
 
 const Account = ({user}) => {
     const { email, password, name } = user || {};
@@ -27,27 +28,30 @@ const Account = ({user}) => {
     
 
   return (
-    <>
+    <div className='Account'>
         <h1>Tu cuenta, {name}</h1>
         <p>Email: {email}</p>
         <p>Password: {password}</p>
         <p>Name: {name}</p>
+        <p className='Disclaimer'>Recuerda que para reservar tienes que visitar la sección bebidas y elegir. Todas las que reserves y no seas capaz de beberte te las cobraremos con clases de refuerzo</p>
 
-        <button onClick={handleShowPlans}>Ver mis Planes</button>
+        <button className='ButtonShow' onClick={handleShowPlans}>¡Comprueba el cuezo que vas a pillar!</button>
+  
         {showPlans ? 
-            <> 
-                Estos son los planes que has elegido:
+            <div className='TusBebidas'> 
+                <h2>Tus bebidas:</h2>
+                <div className='TuBebida'>
                 <ul>
                      {planItems.map((item, index) => (<li key={index}>
                         {item.name ?? item.strDrink} 
                         ({item.count}) 
-                        {/* <button onClick={() => deleteItem(item, index)}>Remove</button> */}
-                        <button onClick={() => deleteItem(item)}>Remove</button>
+                        <button onClick={() => deleteItem(item)}>Eliminar</button>
                         </li>))}
                 </ul>
-            </> 
+                </div>
+            </div> 
             : null}
-    </>
+    </div>
   )
 }
 

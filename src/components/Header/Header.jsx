@@ -4,7 +4,7 @@ import AuthRoute from '../AuthRoute/AuthRoute';
 import { RequestProvider } from './../../context/RequestsContext';
 
 const Home = React.lazy(() => import('../../pages/Home/Home'));
-const Plans = React.lazy(() => import('../../pages/Plans/Plans'));
+const Drinks = React.lazy(() => import('../../pages/Drinks/Drinks'));
 const Account = React.lazy(() => import('../../pages/Account/Account'));
 const Login = React.lazy(()=> import('../Login/Login') );
 
@@ -45,8 +45,8 @@ const Header = () => {
 
       {user ?
       <>
-        <Link to="/planes">
-          <button>Planes</button>
+        <Link to="/bebidas">
+          <button>Bebidas</button>
         </Link>
         <Link to="/mi-cuenta">
           <button>Mi Cuenta</button>
@@ -70,10 +70,10 @@ const Header = () => {
           } 
         />
         <Route 
-          path="/planes" 
+          path="/bebidas" 
           element={
             <React.Suspense fallback={<>Cargando...</>}>
-              <Plans />
+              <Drinks />
             </React.Suspense>
           } 
         />

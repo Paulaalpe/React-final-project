@@ -6,24 +6,20 @@ import './Account.scss';
 const Account = ({user}) => {
     const { email, password, name } = user || {};
     const [showPlans, setShowPlans] = useState(false);
-    // const [showButton, setShowButton] = useState(false); 
-     
-    const {planItems } = useContext(RequestContext);
+      
+    const {planItems, setPlanItems } = useContext(RequestContext);
 
     const handleShowPlans = (()=> {
         setShowPlans(!showPlans);
     })
 
-  //   const handleShowButton = (()=> {
-  //     setShowButton(!showButton);
-  // })
+    const deleteItem = (index) => {
+      const newPlanItems = [...planItems];
 
-    const deleteItem = (item) => {
-      if (item.count > 0) {
-          item.count -=1
-      } else {
-        console.log(item)
-      }
+      if (newPlanItems[index].count >0) {
+        newPlanItems[index].count -=1
+        setPlanItems(newPlanItems)
+      } 
     }
     
 
@@ -45,7 +41,7 @@ const Account = ({user}) => {
                      {planItems.map((item, index) => (<li key={index}>
                         {item.name ?? item.strDrink} 
                         ({item.count}) 
-                        <button onClick={() => deleteItem(item)}>Eliminar</button>
+                        <button onClick={() => deleteItem(index)}>Eliminar</button>
                         </li>))}
                 </ul>
                 </div>
